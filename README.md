@@ -1,64 +1,34 @@
-# TP
-Pour pouvoir lancer ce TP en local, il va falloir suivre les instructions suivantes:
+# TPs for Supaero JupyterHub
 
-  * Installer virtualBox
+## Files:
+- env_validation_with_datascience_kernel.ipynb
+- tp1_initiation_spark.ipynb
+- tp2_etl_streaming.ipynb
+- tp3_window_agg.ipynb
+- requirements.txt
 
-1) Télécharger le fichier d’installation sur le site officiel de [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
+Instructions:
+- Place the notebooks on JupyterHub, ensure Spark and required packages are installed.
+- For streaming TPs, start Kafka on a machine accessible to students.
 
-2) Exécuter-le
 
-Il vous sera peut-être demandé d’installer des pilotes, car VirtualBox va créer une ou plusieurs cartes réseaux virtuelles
+# Spark & Kafka Labs for Supaero JupyterHub
 
-<center><img src="TPs/img/install/dep.PNG"></center>
-Lien: https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170
-<center><img src="TPs/img/install/dep_c++.PNG"></center>
+## Included Files
+- `env_validation_with_datascience_kernel.ipynb`: Validate environment and kernel setup
+- `tp1_initiation_spark.ipynb`: Spark basics: DataFrames, transformations, aggregations
+- `tp2_etl_streaming.ipynb`: Streaming ETL with Spark and Kafka
+- `tp3_window_agg.ipynb`: Windowed aggregations in Spark Structured Streaming
+- `requirements.txt`: Required Python packages
 
-5) Appliquer la procédure en laissant les paramètres par défaut.
+## Instructions for Students
+1. **Place notebooks** in JupyterHub and make sure the Spark kernel and all required Python packages are installed.
+2. **Run environment validation** (`env_validation_with_datascience_kernel.ipynb`) first to ensure everything works.
+3. **For streaming labs** (TP2 & TP3):
+   - Start Kafka on a machine accessible to students.
+   - Use the provided `bootstrap_servers` addresses in all Kafka producers/consumers.
+4. **Follow each notebook step by step**, read the comments for guidance and hints.
 
-  * Télécharger l'image [ISO Ubuntu](https://www.linuxvmimages.com/images/ubuntu-2004/#ubuntu-20044)
-
-## **Sur la VM Linux:**
-  * Installer [IntelliJ IDEA](https://www.jetbrains.com/help/idea/installation-guide.html#standalone) et lancer la commande suivante:
-```Bash
-  ln -s /opt/idea-x/bin/idea.sh /usr/local/bin/idea
-```
-  * Installer et configurer [Docker](https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository)
-```Bash
-  # Add Docker's official GPG key:
-  sudo apt-get update
-  sudo apt-get install ca-certificates curl gnupg
-  sudo install -m 0755 -d /etc/apt/keyrings
-  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-  sudo chmod a+r /etc/apt/keyrings/docker.gpg
-    
-  # Add the repository to Apt sources:
-  echo \
-    "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
-    $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
-    sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-  sudo apt-get update
-  
-  sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-```
-  * installer et configurer [Git](https://git-scm.com/book/fr/v2/D%C3%A9marrage-rapide-Installation-de-Git)
-```Bash
-  sudo apt-get install git
-  git config --global user.name "Nom Prénom"
-  git config --global user.email ""
-```
-* installer [java8](https://www.oracle.com/java/technologies/downloads/#java8)
-```Bash
-  sudo apt-get update
-  sudo apt install java-package
-  make-jpkg jdk-8u391-linux-x64.tar.gz
-  sudo dpkg -i oracle-java8-jdk_8u391_amd64.deb
-  sudo update-alternatives --config java
-  java -version
-
-  sudo nano /etc/environment et coller la ligne suivante à la fin du fichier: JAVA_HOME="/usr/lib/jvm/oracle-java8-jdk-amd64/jre/bin/java"
-  source /etc/environment
-```
-* installer Maven:
-```Bash
-  sudo apt-get install maven
-```
+## Notes
+- All labs are designed for **hands-on learning** with small datasets to avoid performance issues.
+- For Kafka exercises, the notebooks **connect to a running broker**. Do **not** try to start Kafka/Zookeeper inside the notebook.

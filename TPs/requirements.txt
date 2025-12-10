@@ -1,0 +1,9 @@
+pyspark>=3.3.0
+kafka-python>=2.0.2
+pandas
+pyarrow
+joblib
+matplotlib
+seaborn
+fastavro
+scikit-learn
