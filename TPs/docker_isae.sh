@@ -1,8 +1,10 @@
-mkdir -p /tmp/docker-ismail
+# Run the steps one by one and replace 'ismail' with 'your name':
+USER_NAME="ismail"
+mkdir -p /tmp/docker-"$USER_NAME"
 mkdir -p ~/.config/systemd/user/docker.service.d
 cat <<'EOF' > ~/.config/systemd/user/docker.service.d/env.conf
 [Service]
-Environment="XDG_DATA_HOME=/tmp/docker-ismail"
+Environment="XDG_DATA_HOME=/tmp/docker-${USER_NAME}"
 EOF
 
 
@@ -22,7 +24,5 @@ EOF
 
 dockerd-rootless-setuptool.sh install
 
-
-# A la fin du tp bien penser à tuer le service:
-
+# At the end of the lab, be sure to stop the service:
 systemctl --user stop docker
